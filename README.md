@@ -11,6 +11,7 @@ I'm new to cybersecurity, but I'm very passionate about it and love tackling com
 
 ## 🚨 Threat Hunting and Security Operations
 
+- **[Threat Hunting Scenario (The Great Admin Heist)](https://github.com/LukaGroff/Threat-Hunting-Scenario-The-Great-Admin-Heist/tree/main)**
 - **[Threat Hunting Scenario (Tor Browser Usage)](https://github.com/LukaGroff/threat-hunting-scenario-tor/tree/main)**
 
 <hr/>
