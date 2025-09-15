@@ -27,7 +27,7 @@ I'm new to cybersecurity, but I'm very passionate about it and love tackling com
 
 [twitter]: https://twitter.com/@LukaGroff
 [instagram]: https://www.instagram.com/luka_groff
-[linkedin]: https://linkedin.com/in/luka-groff-5a95681a0
+[linkedin]: https://linkedin.com/in/luka-groff
 
 <!--
 <img width="35" alt="image" src="https://github.com/user-attachments/assets/2f41c7cd-5ea8-4475-b451-a37161b6c3fb"> 
