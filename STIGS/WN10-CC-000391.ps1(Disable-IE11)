@@ -25,4 +25,14 @@
     PS C:\> .\STIG-ID-WN10-CC-000391.ps1 
 #>
 
-# YOUR CODE GOES HERE
+# Must be run as Administrator
+
+# Create the key if it doesn't exist
+New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Internet Explorer\Main" -Force | Out-Null
+
+# Set values to disable IE11 as standalone browser, option = Never
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Internet Explorer\Main" -Name "DisableInternetExplorer11" -Value 1 -Type DWord
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Internet Explorer\Main" -Name "NotifyDisableIEOptions" -Value "Never" -Type String
+
+# Force Group Policy refresh
+gpupdate /force
