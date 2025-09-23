@@ -1,0 +1,28 @@
+<#
+.SYNOPSIS
+    This PowerShell script ensures that the Internet Explorer 11 is disabled on Windows 10.
+
+.NOTES
+    Author          : Luka Groff
+    LinkedIn        : linkedin.com/in/luka-groff/
+    GitHub          : github.com/LukaGroff
+    Date Created    : 2025-September-23
+    Last Modified   : 2025-September-23
+    Version         : 1.0
+    CVEs            : N/A
+    Plugin IDs      : N/A
+    STIG-ID         : WN10-CC-000391
+
+.TESTED ON
+    Date(s) Tested  : 2025-September-23
+    Tested By       : Luka Groff
+    Systems Tested  : Windows 10
+    PowerShell Ver. : 
+
+.USAGE
+    Put any usage instructions here.
+    Example syntax:
+    PS C:\> .\STIG-ID-WN10-CC-000391.ps1 
+#>
+
+# YOUR CODE GOES HERE
