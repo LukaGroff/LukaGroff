@@ -31,9 +31,12 @@
 # Create the key if it doesn't exist
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Internet Explorer\Main" -Force | Out-Null
 
-# Set values to disable IE11 as standalone browser, option = Never
+# Disable IE11 as standalone browser
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Internet Explorer\Main" -Name "DisableInternetExplorer11" -Value 1 -Type DWord
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Internet Explorer\Main" -Name "NotifyDisableIEOptions" -Value "Never" -Type String
 
-# Force Group Policy refresh
-gpupdate /force
+# Set option to "Never" (0 = Never, 1 = Always, 2 = If required)
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Internet Explorer\Main" -Name "NotifyDisableIEOptions" -Value 0 -Type DWord
+
+# Verify
+Get-ItemProperty "HKLM:\SOFTWARE\Policies\Microsoft\Internet Explorer\Main" |
+Select-Object DisableInternetExplorer11, NotifyDisableIEOptions
