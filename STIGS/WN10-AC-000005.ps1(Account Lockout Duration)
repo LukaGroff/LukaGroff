@@ -1,1 +1,48 @@
+<#
+.SYNOPSIS
+    This PowerShell script ensures that the Internet Explorer 11 is disabled on Windows 10.
 
+.NOTES
+    Author          : Luka Groff
+    LinkedIn        : linkedin.com/in/luka-groff/
+    GitHub          : github.com/LukaGroff
+    Date Created    : 2025-September-23
+    Last Modified   : 2025-September-23
+    Version         : 1.0
+    CVEs            : N/A
+    Plugin IDs      : N/A
+    STIG-ID         : WN10-AC-000005
+
+.TESTED ON
+    Date(s) Tested  : 2025-September-23
+    Tested By       : Luka Groff
+    Systems Tested  : Windows 10
+    PowerShell Ver. : 
+
+.USAGE
+    Paste the code below into powershell ISE, save it as a "script-name".ps1 and run it.
+    Example syntax:
+    PS C:\> .\STIG-ID-WN10-AC-000005.ps1 
+#>
+
+#COPY THE FOLLOWING:
+# Must be run as Administrator
+
+# Desired lockout duration in minutes (set to 0 for "Admin must unlock")
+$duration = 15
+
+# Apply the setting
+secedit /export /cfg C:\secpol.cfg
+
+# Update the config file with new value
+(Get-Content C:\secpol.cfg) -replace 'LockoutDuration = \d+', "LockoutDuration = $duration" |
+    Set-Content C:\secpol.cfg
+
+# Import updated settings
+secedit /configure /db C:\Windows\Security\Database\secedit.sdb /cfg C:\secpol.cfg /areas SECURITYPOLICY
+
+# Cleanup
+Remove-Item C:\secpol.cfg -Force
+
+# Verify
+net accounts
