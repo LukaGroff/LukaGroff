@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    This PowerShell script ensures that the Internet Explorer 11 is disabled on Windows 10.
+    This PowerShell sets the account lockout duration to 15 minutes. When enabled, it prevents brute-force password attacks on the system. This parameter specifies the amount of time that an account will remain locked after the specified number of failed logon attempts.
 
 .NOTES
     Author          : Luka Groff
