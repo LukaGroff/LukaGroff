@@ -28,21 +28,8 @@
 #COPY THE FOLLOWING:
 # Must be run as Administrator
 
-# Desired lockout duration in minutes (set to 0 for "Admin must unlock")
-$duration = 15
+# Set Account Lockout Duration to 15 minutes
+net accounts /lockoutduration:15
 
-# Apply the setting
-secedit /export /cfg C:\secpol.cfg
-
-# Update the config file with new value
-(Get-Content C:\secpol.cfg) -replace 'LockoutDuration = \d+', "LockoutDuration = $duration" |
-    Set-Content C:\secpol.cfg
-
-# Import updated settings
-secedit /configure /db C:\Windows\Security\Database\secedit.sdb /cfg C:\secpol.cfg /areas SECURITYPOLICY
-
-# Cleanup
-Remove-Item C:\secpol.cfg -Force
-
-# Verify
-net accounts
+# Verify the setting
+net accounts | findstr "Lockout"
