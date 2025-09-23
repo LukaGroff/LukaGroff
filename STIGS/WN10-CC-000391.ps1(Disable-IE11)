@@ -20,11 +20,12 @@
     PowerShell Ver. : 
 
 .USAGE
-    Put any usage instructions here.
+    Paste the code below into powershell ISE, save it as a "script-name".ps1 and run it.
     Example syntax:
     PS C:\> .\STIG-ID-WN10-CC-000391.ps1 
 #>
 
+#COPY THE FOLLOWING:
 # Must be run as Administrator
 
 # Create the key if it doesn't exist
