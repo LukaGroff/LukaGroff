@@ -1,1 +1,42 @@
+<#
+.SYNOPSIS
+    This PowerShell script configures the SMB server to always perform SMB packet signing. Digitally signed SMB packets aid in preventing man-in-the-middle attacks.
+.NOTES
+    Author          : Luka Groff
+    LinkedIn        : linkedin.com/in/luka-groff/
+    GitHub          : github.com/LukaGroff
+    Date Created    : 2025-September-24
+    Last Modified   : 2025-September-24
+    Version         : 1.0
+    CVEs            : N/A
+    Plugin IDs      : N/A
+    STIG-ID         : WN10-SO-000120
 
+.TESTED ON
+    Date(s) Tested  : 2025-September-24
+    Tested By       : Luka Groff
+    Systems Tested  : Windows 10
+    PowerShell Ver. : 
+
+.USAGE
+    Paste the code below into powershell ISE, save it as a "script-name".ps1 and run it.
+    Example syntax:
+    PS C:\> .\STIG-ID-WN10-SO-000120.ps1 
+#>
+
+#COPY THE FOLLOWING:
+# Must be run in an elevated PowerShell session
+
+$regPath = "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters"
+$regName = "RequireSecuritySignature"
+
+# Create key if missing
+If (-not (Test-Path $regPath)) {
+    New-Item -Path $regPath -Force | Out-Null
+}
+
+# Set RequireSecuritySignature to 1 (Enabled)
+Set-ItemProperty -Path $regPath -Name $regName -Value 1 -Type DWord
+
+# Verify
+Get-ItemProperty -Path $regPath -Name $regName
