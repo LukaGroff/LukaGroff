@@ -27,10 +27,10 @@
 #COPY THE FOLLOWING:
 # Must be run in an elevated PowerShell session
 
-$regPath = "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters"
+$regPath = "HKLM:\SYSTEM\CurrentControlSet\Services\LanManServer\Parameters"
 $regName = "RequireSecuritySignature"
 
-# Create key if missing
+# Create the key if missing
 If (-not (Test-Path $regPath)) {
     New-Item -Path $regPath -Force | Out-Null
 }
@@ -40,3 +40,4 @@ Set-ItemProperty -Path $regPath -Name $regName -Value 1 -Type DWord
 
 # Verify
 Get-ItemProperty -Path $regPath -Name $regName
+
